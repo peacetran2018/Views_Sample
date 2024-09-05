@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "t6Z6XbkeJes6OhwDWc2xBchMIP+smO2eL1i7f86tRBM=",
+  "Source": "Views_Web",
+  "BasePath": "_content/Views_Web",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Views_Web/wwwroot",
+      "Source": "Views_Web",
+      "ContentRoot": "/Volumes/Peace_SSD/learning/dotnet/Views_Sample/Views_Web/wwwroot/",
+      "BasePath": "_content/Views_Web",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
