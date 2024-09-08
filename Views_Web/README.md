@@ -84,4 +84,8 @@ app.Run();
         string alertMessage = $"<script>alert('{people.Count} people')</script>";
     }
 
+    //...
+    //body tag
+    @Html.Raw(alertMessage)
+    //...
 ```
