@@ -1,52 +1,62 @@
-@using Views_Web.Models
+@model IEnumerable<Person>
 @{
-    string greetings = "Hello world";
-    List<Person> people = new List<Person>()
-        {
-            new Person(){
-                name = "Peace",
-                DOB = Convert.ToDateTime("1992-06-18")
-            },
-            new Person(){
-                name = "Giang",
-                DOB = Convert.ToDateTime("1998-03-10")
-            }
-        };
-    Person person = new Person() {
+    //string greetings = ViewData["Title"].ToString();
+    
+    @* Person person = new Person() {
         name = "Peace",
         DOB = Convert.ToDateTime("1992-06-18")
-    };
+    }; *@
+    //List<Person>? people = (List<Person>?)ViewData["People"];
+    //List<Person>? people = ViewData["People"] as List<Person>?;
 }
 @* if @ { method } => local function *@
 @* if @functions { method } => methods in view *@
 @{
-    double? GetAge(DateTime? DOB){
+    @* double? GetAge(DateTime? DOB){
         if(DOB is not null){
             return Math.Round((DateTime.Now - DOB.Value).TotalDays / 365.25);
         }
         return null;
-    }
+    } *@
 
     //int x = 10;//Fields
 
-    string alertMessage = $"<script>alert('{people.Count} people');</script>";
+    //string alertMessage = $"<script>alert('{people.Count} people');</script>";
 }
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>@greetings</title>
+        <title>@ViewData["Title"]</title>
         <meta charset="uft-8" />
+        <link href="~/StyleSheet.css" rel="stylesheet">
     </head>
     <body>
-        @Html.Raw(alertMessage)
-        @{
-            @:Hello
-        }
-        <h1>@person.name</h1>
-        @{
-            double? age = GetAge(person.DOB);
-        }
-        <h3>@age years old</h3>
+        <div class="page-content">
+            @* @Html.Raw(alertMessage) *@
+            <h1>Welcome</h1>
+
+            @foreach(var person in Model){
+                <div class="box float-left w-50">
+                    <h3><a href="/persion-details/@person.name">@person.name</a></h3>
+                    <table class="table w-100">
+                        <tbody>
+                            <tr>
+                                <td>Gender</td>
+                                <td>@person.gender</td>
+                            </tr>
+                            <tr>
+                                <td>Date Of Brith</td>
+                                <td>@person.DOB?.ToString("dd-MM-yyyy")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <a href="/person-with-product">Person with Product</a>
+                    </div>
+                </div>
+            }
+        </div>
+        
     </body>
 </html>

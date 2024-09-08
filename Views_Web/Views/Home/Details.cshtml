@@ -1,0 +1,30 @@
+@model Person
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Person Details</title>
+        <meta charset="uft-8" />
+        <link href="~/StyleSheet.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="page-content">
+            <h1>Person Details</h1>
+            <table class="table float-left w-50">
+                <tbody>
+                    <tr>
+                        <td>Gender</td>
+                        <td>@Model.gender</td>
+                    </tr>
+                    <tr>
+                        <td>Date Of Birth</td>
+                        <td>@Model.DOB?.ToString("dd-MM-yyyy")</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <a href="/home">Back to home</a>
+            </div>
+        </div>
+    </body>
+</html>
