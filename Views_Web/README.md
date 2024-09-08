@@ -17,7 +17,7 @@ app.Run();
 ## 2. Code block and Expression
 
 ### Sample
-```cshtml
+```C#
     @{
         //Code block
         string greetings =  "Hello World";
@@ -34,7 +34,7 @@ app.Run();
 
 
 ### Sample
-```cshtml
+```C#
     ...
     <text>Hello</text>
     <h1>Peace</h1>
@@ -51,7 +51,7 @@ app.Run();
 ## 4. Local Functions
 
 ### Sample local functions
-```cshtml
+```C#
     @{
         double? GetAge(DateTime? DOB){
             if(DOB is not null){
@@ -63,7 +63,7 @@ app.Run();
 ```
 
 ### Sample methods in view
-```cshtml
+```C#
     @functions{
         double? GetAge(DateTime? DOB){
             if(DOB is not null){
@@ -72,4 +72,16 @@ app.Run();
             return null;
         }
     }
+```
+
+## 5. Html Raw
+    - To convert html string to html DOM
+
+### Sample
+```C#
+    @{
+        //...
+        string alertMessage = $"<script>alert('{people.Count} people')</script>";
+    }
+
 ```

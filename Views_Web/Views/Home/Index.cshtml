@@ -1,6 +1,17 @@
 @using Views_Web.Models
 @{
     string greetings = "Hello world";
+    List<Person> people = new List<Person>()
+        {
+            new Person(){
+                name = "Peace",
+                DOB = Convert.ToDateTime("1992-06-18")
+            },
+            new Person(){
+                name = "Giang",
+                DOB = Convert.ToDateTime("1998-03-10")
+            }
+        };
     Person person = new Person() {
         name = "Peace",
         DOB = Convert.ToDateTime("1992-06-18")
@@ -8,7 +19,7 @@
 }
 @* if @ { method } => local function *@
 @* if @functions { method } => methods in view *@
-@functions{
+@{
     double? GetAge(DateTime? DOB){
         if(DOB is not null){
             return Math.Round((DateTime.Now - DOB.Value).TotalDays / 365.25);
@@ -16,7 +27,9 @@
         return null;
     }
 
-    int x = 10;//Fields
+    //int x = 10;//Fields
+
+    string alertMessage = $"<script>alert('{people.Count} people');</script>";
 }
 
 <!DOCTYPE html>
@@ -26,6 +39,7 @@
         <meta charset="uft-8" />
     </head>
     <body>
+        @Html.Raw(alertMessage)
         @{
             @:Hello
         }
