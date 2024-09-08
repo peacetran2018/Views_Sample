@@ -1,10 +1,38 @@
+@using Views_Web.Models
+@{
+    string greetings = "Hello world";
+    Person person = new Person() {
+        name = "Peace",
+        DOB = Convert.ToDateTime("1992-06-18")
+    };
+}
+@* if @ { method } => local function *@
+@* if @functions { method } => methods in view *@
+@functions{
+    double? GetAge(DateTime? DOB){
+        if(DOB is not null){
+            return Math.Round((DateTime.Now - DOB.Value).TotalDays / 365.25);
+        }
+        return null;
+    }
+
+    int x = 10;//Fields
+}
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>First View</title>
+        <title>@greetings</title>
         <meta charset="uft-8" />
     </head>
     <body>
-        <h1>First View</h1>
+        @{
+            @:Hello
+        }
+        <h1>@person.name</h1>
+        @{
+            double? age = GetAge(person.DOB);
+        }
+        <h3>@age years old</h3>
     </body>
 </html>
