@@ -1,0 +1,47 @@
+@model IEnumerable<WeatherModel>
+
+@{
+    string GetBackGroundColorByTemp(int temp){
+        return temp switch{
+            (<= 44) => "blue-back",
+            (> 44) and (<= 74) => "green-back",
+            (> 74) => "orange-back"
+        };
+    }
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather App</title>
+        <meta charset="utf-8" />
+        <link href="~/StyleSheet.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-content">
+                <div class="margin-bottom">
+                    <h1>Weather</h1>
+                </div>
+                <div class="margin-top-200 margin-left">
+                    <div class="flex">
+                        @foreach(var item in Model){
+                            <div class="box @GetBackGroundColorByTemp(item.Temperature)">
+                                <div class="flex-borderless">
+                                    <div class="w-50">
+                                        <h2>@item.CityName</h2>
+                                        <h4 class="text-grey">@item.DateAndTime.ToString("hh:mm tt")</h4>
+                                        <a href="/details/@item.CityUniqueCode">Details</a>
+                                    </div>
+                                    <div class="w-50 border-left">
+                                        <h1 class="margin-left">@item.Temperature <sup class="text-grey">&#8457</sup></h1>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
